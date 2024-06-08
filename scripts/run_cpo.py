@@ -23,7 +23,6 @@ from transformers import AutoModelForCausalLM, set_seed
 
 from alignment import (
     DataArguments,
-    DPOConfig,
     H4ArgumentParser,
     ModelArguments,
     get_checkpoint,
@@ -36,9 +35,8 @@ from alignment import (
 )
 from alignment.data import maybe_insert_system_message, is_openai_format
 from peft import PeftConfig, PeftModel
-from trl import CPOTrainer, CPOConfig
-from dataclasses import dataclass, field
-from typing import Optional, Literal
+from cpo_trainer import CPOTrainer, CPOConfig
+from typing import Literal
 
 logger = logging.getLogger(__name__)
 
@@ -242,14 +240,7 @@ def main():
             revision=model_args.model_revision,
         )
         model_kwargs = None
-
-    ref_model = model
-    ref_model_kwargs = model_kwargs
-
-    if model_args.use_peft is True:
-        ref_model = None
-        ref_model_kwargs = None
-
+        
     #########################
     # Instantiate CPO trainer
     #########################

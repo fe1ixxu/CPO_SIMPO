@@ -13,7 +13,9 @@ preprocessing_num_workers: 12
 
 # CPOTrainer arguments
 bf16: true
-beta: 0.1
+beta: 2.5
+simpo_gamma: 1.4
+loss_type: simpo
 do_eval: true
 evaluation_strategy: steps
 eval_steps: 400
