@@ -34,7 +34,7 @@ from transformers.trainer_utils import EvalLoopOutput
 from transformers.utils import is_torch_fx_proxy
 
 from trl.import_utils import is_peft_available, is_wandb_available
-from .cpo_config import CPOConfig
+from cpo_config import CPOConfig
 from trl.trainer.utils import (
     DPODataCollatorWithPadding,
     disable_dropout_in_model,
@@ -267,6 +267,7 @@ class CPOTrainer(Trainer):
         self.beta = args.beta
         self.label_smoothing = args.label_smoothing
         self.loss_type = args.loss_type
+        self.cpo_alpha = args.cpo_alpha
 
         if args.loss_type == "simpo":
             self.simpo_gamma = args.simpo_gamma
@@ -703,7 +704,8 @@ class CPOTrainer(Trainer):
             return loss
 
         labels = concatenated_batch["concatenated_labels"].clone()
-
+        
+        nll_loss = cross_entropy_loss(all_logits[:len_chosen], labels[:len_chosen])
         # if self.loss_type != "simpo":
         #     nll_loss = cross_entropy_loss(all_logits[:len_chosen], labels[:len_chosen])
         # else:
@@ -747,7 +749,7 @@ class CPOTrainer(Trainer):
             policy_rejected_logps,
         )
 
-        loss = losses.mean() + policy_nll_loss
+        loss = losses.mean() + self.cpo_alpha * policy_nll_loss
         reward_accuracies = (chosen_rewards > rejected_rewards).float()
 
         prefix = "eval_" if train_eval == "eval" else ""
