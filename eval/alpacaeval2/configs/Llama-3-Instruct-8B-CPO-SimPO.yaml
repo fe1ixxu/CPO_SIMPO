@@ -1,16 +1,16 @@
-Llama-3-Instruct-8B-SimPO:
+Llama-3-Instruct-8B-CPO-SimPO:
   completions_kwargs:
     batch_size: 900
     do_sample: true
     max_new_tokens: 4096
     model_kwargs:
       torch_dtype: bfloat16
-    model_name: princeton-nlp/Llama-3-Instruct-8B-SimPO
+    model_name: haoranxu/Llama-3-Instruct-8B-CPO-SimPO
     stop_token_ids:
     - 128001
     - 128009
-    temperature: 0.9
-    top_p: 1.0
+    temperature: 0.6
+    top_p: 0.9
   fn_completions: vllm_local_completions
-  pretty_name: Llama-3-Instruct-8B-SimPO
+  pretty_name: Llama-3-Instruct-8B-CPO-SimPO
   prompt_template: templates/llama3.txt
