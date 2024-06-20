@@ -1,6 +1,6 @@
 # The joint of Contrastive Preference Optimization (CPO) & Simple Preference Optimization (SimPO)
 
-This repository contains the code and released models for [CPO](https://arxiv.org/pdf/2401.08417) and [SimPO](https://arxiv.org/abs/2405.14734). The code is based on [SimPO github](https://github.com/princeton-nlp/SimPO). We focuse on highlighting reference-free preference learning and demonstrating the effectiveness of SimPO. 
+This repository contains the code and released models for [CPO](https://arxiv.org/pdf/2401.08417) and [SimPO](https://arxiv.org/abs/2405.14734). The code is based on [SimPO github](https://github.com/princeton-nlp/SimPO). We focus on highlighting reference-free preference learning and demonstrating the effectiveness of SimPO. 
 
 Additionally, we integrate length normalization and target reward margin into CPO, showing promising results and the poential benefits to combine them together. 
 
