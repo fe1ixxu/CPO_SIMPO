@@ -22,7 +22,8 @@ Below is the list of models that we evaluated .
 
 | models                       |                                                                                                           | AE2 LC | AE2 WR |
 |------------------------------|-----------------------------------------------------------------------------------------------------------|:------:|:------:|
-| Llama3 Instruct 8B SimPO (reported)     | [haoranxu/Llama-3-Instruct-8B-SimPO](https://huggingface.co/haoranxu/Llama-3-Instruct-8B-SimPO) |  44.7  |  40.5  |
+| Llama3 Instruct 8B SimPO (reported)     | [princeton-nlp/Llama-3-Instruct-8B-SimPO](https://huggingface.co/princeton-nlp/Llama-3-Instruct-8B-SimPO) |  44.7  |  40.5  |
+| Llama3 Instruct 8B SimPO (reproduced)     | [haoranxu/Llama-3-Instruct-8B-SimPO](https://huggingface.co/haoranxu/Llama-3-Instruct-8B-SimPO) |  43.3  |  40.6  |
 | Llama3 Instruct 8B CPO       | [haoranxu/Llama-3-Instruct-8B-CPO](https://huggingface.co/haoranxu/Llama-3-Instruct-8B-CPO) |  36.07  |  40.06  |
 | Llama3 Instruct 8B CPO-SimPO | [haoranxu/Llama-3-Instruct-8B-CPO-SimPO](https://huggingface.co/haoranxu/Llama-3-Instruct-8B-CPO-SimPO) |  46.94  |  44.72  |
 
