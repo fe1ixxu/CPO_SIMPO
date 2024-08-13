@@ -7,15 +7,15 @@ Additionally, we integrate length normalization and target reward margin into CP
 ## Introduction
 CPO and SimPO share similar objectives but have different goals. CPO adds a BC-regularizer to prevent the model from deviating too much from the preferred data distribution.
 
-$L_{CPO}(\pi_\theta;U) = E_{(x,y_w,y_l) \sim \mathcal{D}} \Big[ \log \sigma \Big( \beta \log \pi_{\theta}(y_w | x)  - \beta \log \pi_{\theta}(y_l | x) \Big) - \log \pi_\theta(y_w| x)\Big]$
+$L_{CPO}(\pi_\theta;U) = -E_{(x,y_w,y_l) \sim \mathcal{D}} \Big[ \log \sigma \Big( \beta \log \pi_{\theta}(y_w | x)  - \beta \log \pi_{\theta}(y_l | x) \Big) + \log \pi_\theta(y_w| x)\Big]$
 
 SimPO incorporates length normalization and target reward margin to improve model performance and prevent the generation of long but low-quality sequences:
 
-$L_{SimPO}(\pi_\theta;U) = E_{(x,y_w,y_l) \sim \mathcal{D}} \Big[ \log \sigma \Big( \frac{\beta}{|y_w|} \log \pi_{\theta}(y_w | x)  - \frac{\beta}{|y_l|} \log \pi_{\theta}(y_l | x)  - \gamma  \Big) \Big]$
+$L_{SimPO}(\pi_\theta;U) = -E_{(x,y_w,y_l) \sim \mathcal{D}} \Big[ \log \sigma \Big( \frac{\beta}{|y_w|} \log \pi_{\theta}(y_w | x)  - \frac{\beta}{|y_l|} \log \pi_{\theta}(y_l | x)  - \gamma  \Big) \Big]$
 
 These two objectives can be jointly used, which we call CPO-SimPO:
 
-$L_{CPO-SimPO}(\pi_\theta;U) = E_{(x,y_w,y_l) \sim \mathcal{D}} \Big[ \log \sigma \Big( \frac{\beta}{|y_w|} \log \pi_{\theta}(y_w | x)  - \frac{\beta}{|y_l|} \log \pi_{\theta}(y_l | x)  - \gamma  \Big)- \alpha \log \pi_\theta(y_w| x)\Big]$
+$L_{CPO-SimPO}(\pi_\theta;U) = -E_{(x,y_w,y_l) \sim \mathcal{D}} \Big[ \log \sigma \Big( \frac{\beta}{|y_w|} \log \pi_{\theta}(y_w | x)  - \frac{\beta}{|y_l|} \log \pi_{\theta}(y_l | x)  - \gamma  \Big)+ \alpha \log \pi_\theta(y_w| x)\Big]$
 
 ## Released Models
 Below is the list of models that we evaluated .
